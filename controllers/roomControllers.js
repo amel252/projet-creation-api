@@ -30,3 +30,12 @@ export const getRoomById = async (req, res) => {
     const room = await RoomModel.findById(req.params.id);
     res.send(room);
 };
+//  ****update room****
+export const updateRoom = async (req, res) => {
+    //  chercher l'élement a modifier
+    const room = await RoomModel.findByIdAndUpdate(req.params.id, req.body);
+    //  enregistrer la recherche
+    await room.save();
+    //  envoyé la mise a jour au BD
+    res.send(room);
+};

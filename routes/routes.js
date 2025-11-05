@@ -5,6 +5,7 @@ import {
     addRoom,
     getRooms,
     getRoomById,
+    updateRoom,
 } from "../controllers/roomControllers.js";
 import { catchErrors } from "../helpers.js";
 
@@ -15,5 +16,6 @@ router.post("/test", postTest);
 router.post("/add-room", catchErrors(addRoom));
 router.get("/get-rooms", catchErrors(getRooms));
 router.get("/get-room/:id", catchErrors(getRoomById));
+router.put("/update-room/:id", catchErrors(updateRoom));
 
 export default router;
