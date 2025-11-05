@@ -39,3 +39,14 @@ export const updateRoom = async (req, res) => {
     //  envoyé la mise a jour au BD
     res.send(room);
 };
+//  *** delete room **
+export const deleteRoom = async (req, res) => {
+    //  chercher l'élement a modifier
+    const room = await RoomModel.findByIdAndDelete(req.params.id);
+    //  si y a pas de chambre on envoie msg d'erreur
+    if (!room) {
+        res.status(404).send("Aucune chambre trouvé ");
+    }
+    // si ok envoie la réponse
+    res.status(200).send("chambre est supprimé ");
+};

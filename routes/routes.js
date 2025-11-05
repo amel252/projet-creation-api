@@ -6,6 +6,7 @@ import {
     getRooms,
     getRoomById,
     updateRoom,
+    deleteRoom,
 } from "../controllers/roomControllers.js";
 import { catchErrors } from "../helpers.js";
 
@@ -13,9 +14,12 @@ const router = express.Router();
 
 router.get("/", getTest);
 router.post("/test", postTest);
-router.post("/add-room", catchErrors(addRoom));
-router.get("/get-rooms", catchErrors(getRooms));
-router.get("/get-room/:id", catchErrors(getRoomById));
-router.put("/update-room/:id", catchErrors(updateRoom));
+
+router.post("/rooms", addRoom); // Créer une chambre
+router.get("/rooms", catchErrors(getRooms)); // obtenir toute les chambres
+router.get("/rooms/:id", getRoomById); // Obtenir une chambre
+router.patch("/rooms/:id", updateRoom); // Mettre à jour partiellement
+router.put("/rooms/:id", updateRoom); // Mettre à jour une chambre
+router.delete("/rooms/:id", deleteRoom); // Supprimer une chambre
 
 export default router;
