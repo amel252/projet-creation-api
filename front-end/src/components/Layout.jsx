@@ -15,12 +15,20 @@ const contentStyle = {
 const footerStyle = {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
-    gap: "0.5rem",
+    alignItems: "flex-start",
+    gap: "1rem",
     padding: "1.5rem",
     fontSize: "1.1rem",
     lineHeight: "1.4",
 };
+
+const menuItems = [
+    { key: "1", label: <Link to="/">Home</Link> },
+    { key: "2", label: <Link to="/rooms">Rooms</Link> },
+    { key: "3", label: <Link to="/about">About us</Link> },
+    { key: "4", label: <Link to="/services">Services</Link> },
+    { key: "5", label: <Link to="/contact">Contact</Link> },
+];
 
 const MLLayout = ({ children }) => {
     return (
@@ -30,23 +38,8 @@ const MLLayout = ({ children }) => {
                     theme="dark"
                     mode="horizontal"
                     defaultSelectedKeys={["1"]}
-                >
-                    <Menu.Item key="1">
-                        <Link to="/">Home</Link>
-                    </Menu.Item>
-                    <Menu.Item key="2">
-                        <Link to="/rooms">Rooms</Link>
-                    </Menu.Item>
-                    <Menu.Item key="3">
-                        <Link to="/about">About us </Link>
-                    </Menu.Item>
-                    <Menu.Item key="4">
-                        <Link to="/services">Services</Link>
-                    </Menu.Item>
-                    <Menu.Item key="5">
-                        <Link to="/contact">Contact</Link>
-                    </Menu.Item>
-                </Menu>
+                    items={menuItems} // Utilisation correcte de items
+                />
             </Header>
 
             <Content style={contentStyle}>{children}</Content>
@@ -93,6 +86,7 @@ const MLLayout = ({ children }) => {
                         </li>
                     </ul>
                 </div>
+
                 <div className="footer-social">
                     <h4>Social media</h4>
                     <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
